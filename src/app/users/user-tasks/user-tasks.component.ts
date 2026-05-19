@@ -13,6 +13,7 @@ export class UserTasksComponent {
 
   message = input.required<string>();
   userName = input.required<string>();
+
 }
 
 export const userNameResolver: ResolveFn<string> = (activatedRouteSnapshot: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {

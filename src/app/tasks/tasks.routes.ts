@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { NewTaskComponent } from './new-task/new-task.component';
-import { TasksComponent } from './tasks.component';
+import { TasksComponent, tasksResolver } from './tasks.component';
 
 export const routes: Routes = [
   {
@@ -11,6 +11,10 @@ export const routes: Routes = [
   {
     path: 'tasks',
     component: TasksComponent,
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+    resolve: {
+      userTasks: tasksResolver
+    }
   },
   {
     path: 'tasks/new',
