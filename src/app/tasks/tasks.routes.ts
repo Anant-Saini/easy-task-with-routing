@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { NewTaskComponent } from './new-task/new-task.component';
+import { canDeactivateAddTask, NewTaskComponent } from './new-task/new-task.component';
 import { TasksComponent, tasksResolver } from './tasks.component';
 
 export const routes: Routes = [
@@ -11,7 +11,7 @@ export const routes: Routes = [
   {
     path: 'tasks',
     component: TasksComponent,
-    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+    runGuardsAndResolvers: 'always',
     resolve: {
       userTasks: tasksResolver
     }
@@ -19,6 +19,7 @@ export const routes: Routes = [
   {
     path: 'tasks/new',
     component: NewTaskComponent,
-    title: 'Add Task'
+    title: 'Add Task',
+    canDeactivate: [canDeactivateAddTask]
   },
 ];

@@ -1,9 +1,21 @@
-import { Routes } from '@angular/router';
+import { CanMatchFn, RedirectCommand, Router, Routes } from '@angular/router';
 
 import { NoTaskComponent } from './tasks/no-task/no-task.component';
 import { titleResolver, userNameResolver, UserTasksComponent } from './users/user-tasks/user-tasks.component';
 import { routes as tasksRoutes } from './tasks/tasks.routes';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { inject } from '@angular/core';
+
+// export const dummyRouteGuardFn: CanMatchFn = (route, urlSegments) => {
+//   const router = inject(Router);
+//   const shouldAllow = Math.random();
+//   if(shouldAllow < 0.5) {
+//     return true;
+//   } else {
+//     return new RedirectCommand(router.parseUrl('/unauthorised'));
+//   }
+// }
+
 
 export const routes: Routes = [
   {
@@ -18,6 +30,7 @@ export const routes: Routes = [
     data: {
       message: 'Hello Boi!',
     },
+    //canMatch: [dummyRouteGuardFn],
     resolve: {
       userName: userNameResolver,
     },
