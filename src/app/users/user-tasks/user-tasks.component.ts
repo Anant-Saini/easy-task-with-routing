@@ -24,4 +24,12 @@ export const userNameResolver: ResolveFn<string> = (activatedRouteSnapshot: Acti
   );
 
 }
+
+export const titleResolver: ResolveFn<string> = (
+  activatedRouteSnapshot: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot,
+) => {
+  const firstName = userNameResolver(activatedRouteSnapshot, state).toString().split(' ')[0];
+  return `${firstName}'s Tasks`; 
+};
   
